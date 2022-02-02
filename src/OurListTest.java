@@ -11,7 +11,7 @@ public class OurListTest {
     @Before
     public void setUp() throws Exception {
         b = new OurArrayList<String>();
-        c = new OurLinkedList<String>();
+       // b = new OurLinkedList<String>();   can be switched to test case to link list by uncommenting this
     }
 
     @Test
@@ -125,6 +125,7 @@ public class OurListTest {
         b.add("boys");
         assertEquals(7, b.firstIndexAfter("hello", 0));
         assertEquals(-1, b.firstIndexAfter("i", 3));
+
 
     }
 

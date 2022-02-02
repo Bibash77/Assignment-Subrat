@@ -110,7 +110,7 @@ public class OurLinkedList< T> implements OurList< T> {
 		Node curr = head;  // start with head
 		int index = 0;
 		while(curr.next != null) {
-			if(index >= i && curr.value.equals(item)) {    // check if value contains after given first index
+			if(index > i && curr.value.equals(item)) {    // check if value contains after given first index
 					return index;
 			}
 			curr = curr.next;
@@ -127,6 +127,7 @@ public class OurLinkedList< T> implements OurList< T> {
 		while(curr.next != null) {
 			if(curr.value.equals(item)) {    // check if cur value contains the item
 				contains = true;
+
 				if(curr.next.value == null) { // check if its last element
 					break;
 				}
