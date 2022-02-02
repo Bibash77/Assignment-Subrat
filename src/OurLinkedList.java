@@ -1,3 +1,5 @@
+import java.util.NoSuchElementException;
+
 public class OurLinkedList< T> implements OurList< T> {
 
 		private Node head;
@@ -104,12 +106,42 @@ public class OurLinkedList< T> implements OurList< T> {
 	}
 
 	@Override
-	public void firstIndexAfter(T s, int i) {
-
+	public int firstIndexAfter(T item, int i) {
+		Node curr = head;  // start with head
+		int index = 0;
+		while(curr.next != null) {
+			if(index >= i && curr.value.equals(item)) {    // check if value contains after given first index
+					return index;
+			}
+			curr = curr.next;
+				index++;
+		}
+		return -1;  // if not found any returns -1
 	}
 
 	@Override
-	public void moveLater(T s, T t) {
+	public void moveLater(T item) {
+		Node curr = head;  // start with head
+		boolean contains = false;
+
+		while(curr.next != null) {
+			if(curr.value.equals(item)) {    // check if cur value contains the item
+				contains = true;
+				if(curr.next.value == null) { // check if its last element
+					break;
+				}
+				Node tempValue = curr.next;  // store nex value in temp
+				curr.next.value = curr.value;  // swap value
+				curr.value = tempValue.value;
+				break;             // break after the first occurrence
+			}
+			curr = curr.next;
+
+		}
+
+		if(!contains) {  // print exception if flag is false
+			throw new NoSuchElementException();
+		}
 
 	}
 }
