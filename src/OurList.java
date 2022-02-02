@@ -7,8 +7,8 @@ public interface OurList<T> {
 	public T get(int i);           //returns value at index i
 	public boolean remove(T item); //returns whether it was there
 	
-	public void firstIndexAfter(T s ,int i);    //takes a value and integer index
-	public void moveLater(T s, T t);            //takes a value and moves first occurance of value one position later on list.
+	public int firstIndexAfter(T item ,int i);    //takes a value and integer index
+	public void moveLater(T value);            //takes a value and moves first occurance of value one position later on list.
 	
 
 

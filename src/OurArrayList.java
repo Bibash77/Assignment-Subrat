@@ -1,3 +1,4 @@
+import java.util.NoSuchElementException;
 
 public class OurArrayList< T> implements OurList< T>{
 
@@ -53,12 +54,39 @@ public class OurArrayList< T> implements OurList< T>{
 	}
 
 	@Override
-	public void firstIndexAfter(T s, int i) {
-		for (int j = 0; i<)
+	public int firstIndexAfter(T item, int i) {
+		for (int j = i+1; j<num;j++) { // starts from the index given so first will be skipped
+			System.out.println("val["+ i +"]:"+ vals[i] + "item[" +i +"]" + item);
+			if(vals[j].equals(item)) {
+				return j;   // return index if found
+			}
+		}
+		return -1; // return -1 if not found
 	}
 
 	@Override
-	public void moveLater(T s, T t) {
+	public void moveLater(T item) {
+		boolean contains = false;
+
+			for (int j = 0; j<num;j++) {
+				if(vals[j].equals(item)) {
+					contains = true;   // flag to maintain if it contains the element
+					if(j == num-1) {
+						System.out.println("found in last index");
+					} else {
+						T temp = vals[j + 1];   // take next index and put in temp
+						vals[j + 1] = vals[j];
+						vals[j] = temp; // swap the value
+						break;  // break the loop since we need first occurence only
+					}
+				}
+			}
+
+
+
+		if(!contains) {  // print exception if flag is false
+			throw new NoSuchElementException();
+		}
 
 	}
 }
